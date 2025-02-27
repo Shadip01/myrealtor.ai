@@ -3,19 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --event-purple: #e5e0ff;
+  --event-green: #e7f5e8;
+  --event-blue: #e5f3ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 70px repeat(7, 1fr);
+  gap: 1px;
+}
+
+.time-slot {
+  height: 60px;
+  border-top: 1px solid #eee;
+}
+
+
+
+@layer base {}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
