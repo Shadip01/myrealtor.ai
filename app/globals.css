@@ -3,20 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --event-purple: #e5e0ff;
-  --event-green: #e7f5e8;
-  --event-blue: #e5f3ff;
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 236, 233, 254;
 }
 
-.calendar-grid {
-  display: grid;
-  grid-template-columns: 70px repeat(7, 1fr);
-  gap: 1px;
-}
-
-.time-slot {
-  height: 60px;
-  border-top: 1px solid #eee;
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
 }
 
 

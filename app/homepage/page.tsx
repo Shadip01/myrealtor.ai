@@ -9,9 +9,9 @@ export default function DashboardPage() {
     <div className="container mx-auto px-4 py-8">
       <DashboardHeader />
       <DashboardStats />
-      <TotalSalesChart/>
+      {/* <TotalSalesChart/>
       <ActiveAdvertisements/>
-      <RealtorEfficiency/>
+      <RealtorEfficiency/> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
         <TotalSalesChart />
         <div className="space-y-8">

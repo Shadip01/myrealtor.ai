@@ -4,15 +4,24 @@ import type React from "react"
 
 import { useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 
-export default function LoginForm() {
+interface LoginFormProps {
+  onRegisterClick: () => void
+}
+
+export default function LoginForm({ onRegisterClick }: LoginFormProps) {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     rememberMe: false,
   })
+  const handleLogin = () => {
+    router.push("/homepage") // Change "/dashboard" to any page you want
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -105,7 +114,7 @@ export default function LoginForm() {
         </div>
       </div>
 
-      <div>
+      <div onClick={handleLogin}>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -165,9 +174,9 @@ export default function LoginForm() {
 
       <p className="mt-2 text-center text-sm text-gray-600">
         Don&apos;t have an account?{" "}
-        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+        <button type="button" onClick={onRegisterClick} className="font-medium text-indigo-600 hover:text-indigo-500">
           Register
-        </a>
+        </button>
       </p>
     </motion.form>
   )

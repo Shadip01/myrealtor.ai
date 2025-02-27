@@ -1,13 +1,13 @@
 import type React from "react"
+import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Waton Calendar",
-  description: "Team calendar application",
+  title: "RetailPremier Dashboard",
+  description: "Retail management system dashboard",
 }
 
 export default function RootLayout({
