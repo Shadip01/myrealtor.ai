@@ -38,6 +38,10 @@ export default function SignInForm() {
     router.push("/signup"); 
   };
   
+  const handelForgetPassword = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push("/forgetpassword"); 
+  };
   return (
     <div>
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -144,7 +148,7 @@ export default function SignInForm() {
           </label>
         </div>
         <div className="text-sm">
-          <Link href="#" className="font-medium text-purple-600 hover:text-purple-500">
+          <Link href="#" onClick={handelForgetPassword} className="font-medium text-purple-600 hover:text-purple-500">
             Forgot your password?
           </Link>
         </div>

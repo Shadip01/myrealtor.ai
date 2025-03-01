@@ -119,7 +119,7 @@ export default function SignupPage() {
             </div>
           </div>
 
-          <button onClick={() =>navigate("./components/dashboard/signup-form")}
+          <button onClick={handleSignup}
             type="submit"
             className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors font-medium"
           >
