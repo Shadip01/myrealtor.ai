@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import { useNavigation } from "@/hooks/useNavigation"
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export default function SignupPage() {
     email: "",
     password: "",
   })
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigation()
 
@@ -28,6 +30,10 @@ export default function SignupPage() {
     console.log("Signup attempted with:", formData)
     navigate("/home")
   }
+  const handleLogIn = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push("/login");
+  };
 
   return (
     <div className="min-h-screen bg-purple-100 flex items-center justify-center p-4">
@@ -35,12 +41,12 @@ export default function SignupPage() {
         <div className="flex justify-center mb-8">
           <div className="flex items-center">
             <div className="w-8 h-8 bg-purple-600 rounded-lg mr-2"></div>
-            <span className="font-bold text-2xl text-purple-600">FundVibe.</span>
+            <span className="font-bold text-2xl text-purple-600">Realtor.ai.</span>
           </div>
         </div>
 
         <h1 className="text-3xl font-bold text-center mb-6">Create Your Account</h1>
-        <p className="text-center text-gray-600 mb-8">Join FundVibe and start managing your finances</p>
+        <p className="text-center text-gray-600 mb-8">Join Realtor.ai and start managing your portfolio</p>
 
         <form onSubmit={handleSignup} className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
@@ -113,7 +119,7 @@ export default function SignupPage() {
             </div>
           </div>
 
-          <button
+          <button onClick={() =>navigate("./components/dashboard/signup-form")}
             type="submit"
             className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors font-medium"
           >
@@ -124,13 +130,13 @@ export default function SignupPage() {
         <div className="mt-6 text-center">
           <p className="text-gray-600">
             Already have an account?{" "}
-            <button onClick={() => navigate("/")} className="text-purple-600 hover:underline font-medium">
+            <button onClick={handleLogIn} className="text-purple-600 hover:underline font-medium">
               Log In
             </button>
           </p>
         </div>
 
-        <div className="text-center text-sm text-gray-500 mt-8">2024 FundVibe, All rights Reserved</div>
+        <div className="text-center text-sm text-gray-500 mt-8">2025 Realtor.ai, All rights Reserved</div>
       </div>
     </div>
   )

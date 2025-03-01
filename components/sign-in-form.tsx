@@ -1,10 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -13,7 +13,7 @@ export default function SignInForm() {
     password: "",
     rememberMe: false,
   })
-
+  const router = useRouter();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target
     setFormData({
@@ -27,7 +27,18 @@ export default function SignInForm() {
     console.log("Form submitted:", formData)
     // Handle form submission logic here
   }
+  const handleSignIn = (e: React.MouseEvent) => {
+    e.preventDefault()
+    router.push("/dashboard")
+  }
 
+  const handleLogIn = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push("/components");
+  };
+
+
+  
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Social Login Buttons */}
@@ -139,7 +150,7 @@ export default function SignInForm() {
         </div>
       </div>
 
-      <button
+      <button onClick={handleSignIn}
         type="submit"
         className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors font-medium"
       >
@@ -148,7 +159,7 @@ export default function SignInForm() {
 
       <div className="text-center text-sm">
         Don't have an account?{" "}
-        <Link href="#" className="font-medium text-purple-600 hover:text-purple-500">
+        <Link href="#" onClick={handleLogIn} className="font-medium text-purple-600 hover:text-purple-500">
           Sign up
         </Link>
       </div>
